@@ -50,7 +50,7 @@ public class SecurityConfig {
                                 .requestMatchers("api/login/generate-otp/**", "api/login/verify-otp", "api/login/unlock-account/**").permitAll()
                                 .requestMatchers("/**").hasRole("ADMIN")
                                 .anyRequest().denyAll()
-                )
+                ).csrf(AbstractHttpConfigurer::disable)
                 .httpBasic(withDefaults());
         return http.build();
     }

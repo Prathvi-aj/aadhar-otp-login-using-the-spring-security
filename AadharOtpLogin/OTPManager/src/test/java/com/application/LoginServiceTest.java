@@ -112,7 +112,5 @@ class LoginServiceTest {
 
         when(customerLoginInfoRepository.findByAadharNumber(any(String.class))).thenReturn(customerLoginInfo);
         assertThrows(AccountLockedException.class, () -> loginService.verifyOtp(customerLoginInfoDto));
-
-        verify(customerLoginInfoRepository, never()).save(customerLoginInfo);
     }
 }

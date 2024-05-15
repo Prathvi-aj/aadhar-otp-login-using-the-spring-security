@@ -56,7 +56,7 @@ public class LoginController {
 
     }
     @GetMapping(value = "/get-all-login-details")
-    public ResponseEntity<List<CustomerLoginInfo>> getAllLoginDetails(@PathVariable String aadharNumber)
+    public ResponseEntity<List<CustomerLoginInfo>> getAllLoginDetails()
     {
          return new ResponseEntity<>(loginService.getAllLoginDetails(),HttpStatus.OK);
     }

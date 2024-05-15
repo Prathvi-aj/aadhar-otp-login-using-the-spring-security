@@ -63,10 +63,14 @@ public class LoginService {
             customerLoginInfo.setFailedAttempt(failedAttempts);
 
             if (failedAttempts >= 3) {
-                lockAccount(customerLoginInfo);
+                customerLoginInfo.setIsLocked(true);
+                customerLoginInfo.setAccountLockedTime(LocalDateTime.now());
+                customerLoginInfoRepository.save(customerLoginInfo);
                 throw new AccountLockedException("Account is locked due to too many failed attempts, try again after 1 hour.");
+            }else{
+                customerLoginInfoRepository.save(customerLoginInfo);
             }
-            customerLoginInfoRepository.save(customerLoginInfo);
+
             throw new InvalidOtpException("Invalid OTP, try again. You have " + (3 - failedAttempts) + " more attempts.");
         }
 
@@ -80,10 +84,6 @@ public class LoginService {
         return true;
     }
 
-    private void lockAccount(CustomerLoginInfo customerLoginInfo) {
-        customerLoginInfo.setIsLocked(true);
-        customerLoginInfo.setAccountLockedTime(LocalDateTime.now());
-    }
 
     private void resetFailedAttemptsAndUnlockAccount(CustomerLoginInfo customerLoginInfo) {
         customerLoginInfo.setFailedAttempt(0);
