@@ -27,7 +27,7 @@ public class UserController {
             List<String> errorMessages = bindingResult.getAllErrors().stream()
                     .map(ObjectError::getDefaultMessage)
                     .collect(Collectors.toList());
-            return ResponseEntity.badRequest().body("Validation error(s): " + String.join(", ", errorMessages));
+            return ResponseEntity.badRequest().body("Validation error: " + String.join(", ", errorMessages));
         }
         UserDetailsDto userDetails=userService.addUser(userDetailsDto);
         return new ResponseEntity<>("User Identity "+userDetailsDto.getAadharNumber()+" is added.", HttpStatus.CREATED);
