@@ -12,6 +12,14 @@ To run the IdentityManager service, you need:
 - Maven for building the project
 - MySQL database (you can configure the database connection in the resource/config/application.yml file)
 
+## Database Configuration
+
+IdentityManager service uses a MySQL database running on port 3306.  you can create the schema in your database 
+    
+     create schema test_schema;
+    
+Or If you want to add your database and schema, you can configure the database details in the resource/config/application.yml file.
+
 ## Starting the Service
 1. Clone the repository:
      ```
@@ -61,14 +69,6 @@ The IdentityManager service runs on port 8085 by default. You can access the API
   --header 'Authorization: Basic YWRtaW46cGFzc3dvcmQ=' \
   ```
 
-
-## Database Configuration
-
-IdentityManager service uses a MySQL database running on port 3306.  you can create the schema in your database 
-     ```
-     create schema test_schema;
-     ```
-Or If you want to add your database and schema, you can configure the database connection in the resource/config/application.yml file.
 
 ## Authentication
 
