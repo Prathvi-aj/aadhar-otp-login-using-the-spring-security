@@ -54,3 +54,8 @@ The IdentityManager service manages user identities, storing Aadhar numbers and 
 
 Both services secured using Spring Security to authenticate and authorize access to endpoints.
 Ensure proper configuration of authentication and authorization mechanisms according requirements.
+
+## Notes
+After cloning the repo first configure the database and when you start the running services(check each service documentation(readme file) to know how to run), don't open both services in single intellij tab So you don't need to build both services together because both services contains some common classes so conflict will occure while running the main classes. For solving that issue you can open both service in different different intllij tab Like this :
+![image](https://github.com/Prathvi-aj/aadhar-otp-login-using-the-spring-security/assets/56496325/05f861ae-409d-4cde-9230-5b280ccbb08c)
+
